@@ -1,3 +1,8 @@
+/*
+ ეს ფრაგმენტი იზრდება, როდესაც HTML დოკუმენტის ჩატვირთვა და დაპარსვა დასრულდება
+ . ის არის ღილაკის მოძიების და დამატების დასაწყისი.
+*/
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
     const button = document.getElementById('shuffleButton');
@@ -8,6 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Button not found');
     }
 });
+
+/* 
+
+ეს ფუნქცია იძახება, როდესაც ღილაკზე დაჭერა ხდება. ის ამუშავებს ბლოკების შერევას, მათზე დაჭერის ფუნქციის
+სათავეში უშვებს shuffleArray და removeAdjacentDuplicates ფუნქციებს და შემდეგ მათ ხელახლა დაამატებს გრიდში.
+
+*/
 
 function processBlocks() {
     console.log('Button clicked, processing blocks');
@@ -27,6 +39,11 @@ function processBlocks() {
     }
 }
 
+/* 
+ ეს ფუნქცია შერევს ბლოკებს მასივში შემთხვევით წყვეტის გზით
+
+*/
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -34,6 +51,12 @@ function shuffleArray(array) {
     }
     console.log('Blocks shuffled');
 }
+
+/* 
+
+ფუნქცია აშორებს მიმდებარე დუპლიკატებს ბლოკებში.
+
+*/
 
 function removeAdjacentDuplicates(blocks) {
     for (let i = 0; i < blocks.length - 1; i++) {
@@ -46,6 +69,14 @@ function removeAdjacentDuplicates(blocks) {
     }
     console.log('Adjacent duplicates removed');
 }
+
+/*
+
+
+ამ ფუნქციამ ხდება ბლოკების შემცირება 50%-ით, გრიდში
+მხოლოდ პირველი ნახევარის დატოვებით, და მერე ხელახლა ამუშავებს ბლოკებს, სანამ არ დარჩება ერთი ბლოკი.
+
+*/
 
 function reduceBlocks() {
     let blocks = document.querySelectorAll('.block');
